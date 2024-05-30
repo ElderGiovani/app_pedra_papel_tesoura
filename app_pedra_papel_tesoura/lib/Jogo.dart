@@ -24,7 +24,7 @@ class _JogoState extends State<Jogo> {
     if (kDebugMode) {
       print("Escolha do Usuario :$escolhaUsuario");
     }
-
+    //Exibição da imagem escolhida pelo App
     switch (escolhaApp) {
       case "pedra ":
         setState(() {
@@ -62,7 +62,11 @@ class _JogoState extends State<Jogo> {
       setState(() {
         _mensagem = "Você Perdeu";
       });
-    } else {}
+    } else {
+      setState(() {
+        _mensagem = "Empatamos ";
+      });
+    }
   }
 
   @override
@@ -75,23 +79,31 @@ class _JogoState extends State<Jogo> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Padding(padding: EdgeInsets.only(top: 32, bottom: 16)),
-          const Text(
-            'Escolha do APP',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+          //1) text
+          //2) imagem
+          //3) text resultado
+          //4) Linha 3 imagens
+          const Padding(
+            padding: EdgeInsets.only(top: 32, bottom: 16),
+            child: Text(
+              'Escolha do APP',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Image(image: _imagemApp),
-          const Padding(padding: EdgeInsets.only(top: 32, bottom: 16)),
-          Text(
-            _mensagem,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(top: 32, bottom: 16),
+            child: Text(
+              _mensagem,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Row(
